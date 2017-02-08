@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="activity_horizontal_margin">8dp</dimen>
+    <dimen name="activity_vertical_margin">8dp</dimen>
+    <dimen name="fab_margin">8dp</dimen>
+
+    <!-- Poster size -->
+    <dimen name="cv_poster_width">120dp</dimen>
+    <dimen name="cv_poster_height">180dp</dimen>
+    <dimen name="cv_title_text_size">12sp</dimen>
+    <dimen name="cv_title_sub_text_size">10sp</dimen>
+
+    <dimen name="detail_title_text_size">12sp</dimen>
+    <dimen name="detail_title_sub_text_size">10sp</dimen>
+    <dimen name="detail_overview_text_size">12sp</dimen>
+
+</resources>

@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">FilmClub</string>
+
+    <!-- EntranceActivity -->
+    <string name="movie_poster">Movie Poster</string>
+    <string name="movie_title">Movie Title</string>
+    <string name="movie_year">2017</string>
+    <string name="action_sort_by">Sort by</string>
+
+    <!-- CinemaActivity -->
+    <string name="action_sort_by_popularity">Popularity</string>
+    <string name="action_sort_by_rating">Rating</string>
+    <string name="title_activity_cinema">Cinema</string>
+    <string name="movie_overview">Overview</string>
+    <string name="movie_avg_rating">Avg. Rating</string>
+    <string name="movie_votes">(Votes: %1$d)</string>
+
+    <!-- Spinner -->
+    <string name="loading_title">Preparing Contents</string>
+    <string name="loading_message">Loading...</string>
+
+    <!-- Errors -->
+    <string name="error_api_key_missing">You\'re missing an API key from theMovieDB</string>
+    <string name="error_connection">Could not get Movies</string>
+</resources>
