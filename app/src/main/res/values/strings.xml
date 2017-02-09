@@ -23,4 +23,5 @@
     <!-- Errors -->
     <string name="error_api_key_missing">You\'re missing an API key from theMovieDB</string>
     <string name="error_connection">Could not get Movies</string>
+    <string name="retry">Retry</string>
 </resources>

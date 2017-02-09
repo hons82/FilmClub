@@ -2,12 +2,14 @@ package it.subtree.filmclub.ui.activity;
 
 import android.app.ProgressDialog;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -130,7 +132,7 @@ public class EntranceActivity extends AppCompatActivity {
         updateMovies(sortOrder, 1);
     }
 
-    private void updateMovies(SortBy sortOrder, final int page) {
+    private void updateMovies(final SortBy sortOrder, final int page) {
         if (MovieDbApiClient.API_KEY.isEmpty()) {
             Toast.makeText(getApplicationContext(), getResources().getString(R.string.error_api_key_missing), Toast.LENGTH_LONG).show();
             return;
@@ -181,7 +183,17 @@ public class EntranceActivity extends AppCompatActivity {
             public void onFailure(Call<MoviesResponse> call, Throwable t) {
                 Log.e(TAG, t.toString());
                 dismissLoading();
-                Toast.makeText(getApplicationContext(), getResources().getString(R.string.error_connection), Toast.LENGTH_SHORT).show();
+
+                View.OnClickListener reloadOnClickListener = new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        updateMovies(sortOrder, page);
+                    }
+                };
+
+                Snackbar.make(mRecyclerView, getResources().getString(R.string.error_connection), Snackbar.LENGTH_INDEFINITE)
+                        .setAction(getResources().getString(R.string.retry), reloadOnClickListener)
+                        .show();
             }
         });
 
