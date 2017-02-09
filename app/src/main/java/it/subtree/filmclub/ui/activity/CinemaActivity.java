@@ -17,6 +17,7 @@ public class CinemaActivity extends AppCompatActivity {
 
     public ImageView mCover;
     public TextView mTitle;
+    public TextView mReleaseDate;
     public TextView mAvgRating;
     public TextView mVotes;
     public TextView mOverview;
@@ -30,6 +31,7 @@ public class CinemaActivity extends AppCompatActivity {
 
         mCover = (ImageView) findViewById(R.id.iv_movie_cover);
         mTitle = (TextView) findViewById(R.id.tv_movie_title);
+        mReleaseDate = (TextView) findViewById(R.id.tv_movie_release_date);
         mAvgRating = (TextView) findViewById(R.id.tv_movie_avg_rating);
         mVotes = (TextView) findViewById(R.id.tv_movie_votes);
         mOverview = (TextView) findViewById(R.id.tv_movie_overview);
@@ -43,6 +45,7 @@ public class CinemaActivity extends AppCompatActivity {
 
     private void loadMovieDetail(Movie movie) {
         mTitle.setText(mMovie.getTitle());
+        mReleaseDate.setText(mMovie.getReleaseDate());
         mAvgRating.setText(getResources().getString(R.string.movie_avg_rating) + ": " + movie.getVoteAverage());
         mVotes.setText(getResources().getString(R.string.movie_votes, movie.getVoteCount()));
         mOverview.setText(movie.getOverview());

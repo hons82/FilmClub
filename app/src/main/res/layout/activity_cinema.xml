@@ -47,6 +47,15 @@
                 android:textColor="@color/colorPrimaryDark" />
 
             <TextView
+                android:id="@+id/tv_movie_release_date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/detail_title_sub_text_size"
+                android:text="@string/movie_release_date"
+                android:maxLines="1"
+                android:textColor="@color/colorPrimary"/>
+
+            <TextView
                 android:id="@+id/tv_movie_avg_rating"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
