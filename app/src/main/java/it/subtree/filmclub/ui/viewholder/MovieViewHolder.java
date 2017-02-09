@@ -9,22 +9,29 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 
-import it.subtree.filmclub.ui.activity.CinemaActivity;
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import it.subtree.filmclub.R;
 import it.subtree.filmclub.data.model.Movie;
+import it.subtree.filmclub.ui.activity.CinemaActivity;
 
 public class MovieViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-    public ImageView mCover;
-    public TextView mTitle;
-    public TextView mYear;
+    public static String TAG = MovieViewHolder.class.getSimpleName();
+
+    @BindView(R.id.iv_movie_cover)
+    protected ImageView mCover;
+    @BindView(R.id.tv_movie_title)
+    protected TextView mTitle;
+    @BindView(R.id.tv_movie_year)
+    protected TextView mYear;
+
     private Movie mMovie;
 
     public MovieViewHolder(View v) {
         super(v);
-        mCover = (ImageView) v.findViewById(R.id.iv_movie_cover);
-        mTitle = (TextView) v.findViewById(R.id.tv_movie_title);
-        mYear = (TextView) v.findViewById(R.id.tv_movie_year);
+        ButterKnife.bind(this, v);
+
         itemView.setOnClickListener(this);
     }
 

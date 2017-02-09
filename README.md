@@ -28,8 +28,9 @@ or you simply change the retrieval procedure in `app/build.gradle`
 
 ## Libraries
 
-- [Retrofit](https://github.com/square/retrofit)
+- [Butterknife](https://github.com/JakeWharton/butterknife)
 - [Glide](https://github.com/bumptech/glide)
+- [Retrofit](https://github.com/square/retrofit)
 
 # License
 

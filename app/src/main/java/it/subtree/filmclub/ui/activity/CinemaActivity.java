@@ -8,6 +8,8 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import it.subtree.filmclub.R;
 import it.subtree.filmclub.data.model.Movie;
 
@@ -15,12 +17,18 @@ public class CinemaActivity extends AppCompatActivity {
 
     public static final String EXTRA_MOVIE = "it.subtree.filmclub.ui.activity.CinemaActivity.EXTRA_MOVIE";
 
-    public ImageView mCover;
-    public TextView mTitle;
-    public TextView mReleaseDate;
-    public TextView mAvgRating;
-    public TextView mVotes;
-    public TextView mOverview;
+    @BindView(R.id.iv_movie_cover)
+    protected ImageView mCover;
+    @BindView(R.id.tv_movie_title)
+    protected TextView mTitle;
+    @BindView(R.id.tv_movie_release_date)
+    protected TextView mReleaseDate;
+    @BindView(R.id.tv_movie_avg_rating)
+    protected TextView mAvgRating;
+    @BindView(R.id.tv_movie_votes)
+    protected TextView mVotes;
+    @BindView(R.id.tv_movie_overview)
+    protected TextView mOverview;
 
     private Movie mMovie;
 
@@ -28,13 +36,7 @@ public class CinemaActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cinema);
-
-        mCover = (ImageView) findViewById(R.id.iv_movie_cover);
-        mTitle = (TextView) findViewById(R.id.tv_movie_title);
-        mReleaseDate = (TextView) findViewById(R.id.tv_movie_release_date);
-        mAvgRating = (TextView) findViewById(R.id.tv_movie_avg_rating);
-        mVotes = (TextView) findViewById(R.id.tv_movie_votes);
-        mOverview = (TextView) findViewById(R.id.tv_movie_overview);
+        ButterKnife.bind(this);
 
         Intent intent = getIntent();
         if (intent != null && intent.hasExtra(EXTRA_MOVIE)) {

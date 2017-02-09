@@ -17,6 +17,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import it.subtree.filmclub.R;
 import it.subtree.filmclub.data.api.MovieDbApiClient;
 import it.subtree.filmclub.data.api.MovieDbEndpointInterface;
@@ -30,10 +32,14 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class EntranceActivity extends AppCompatActivity {
+
     public static String TAG = EntranceActivity.class.getSimpleName();
+
     private static final String SORT_MODE = "sort_mode";
 
-    private RecyclerView mRecyclerView;
+    @BindView(R.id.rv_movies)
+    protected RecyclerView mRecyclerView;
+
     private ProgressDialog mLoading;
 
     private enum SortBy {
@@ -67,10 +73,9 @@ public class EntranceActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_entrance);
+        ButterKnife.bind(this);
 
-        mRecyclerView = (RecyclerView) findViewById(R.id.rv_movies);
         mRecyclerView.setHasFixedSize(true);
 
         mRecyclerView.setLayoutManager(new GridAutofitLayoutManager(EntranceActivity.this, (int) getResources().getDimension(R.dimen.cv_poster_width)));
