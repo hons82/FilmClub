@@ -6,4 +6,9 @@
     <color name="colorMovieTitle">#FFFFFF</color>
     <color name="colorMovieSubTitle">#B8B8B8</color>
     <color name="colorMovieCoverPlaceholder">#3F51B5</color>
+
+    <color name="colorReviewAuthor">#FFFFFF</color>
+    <color name="backgroundReviewAuthor">#303F9F</color>
+    <color name="colorReviewContent">#3F51B5</color>
+    <color name="colorTrailerPlaceholder">#3F51B5</color>
 </resources>

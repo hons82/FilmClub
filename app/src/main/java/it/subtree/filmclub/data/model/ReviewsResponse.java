@@ -8,7 +8,7 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-public class MoviesResponse implements Parcelable
+public class ReviewsResponse implements Parcelable
 {
 
     @SerializedName("page")
@@ -16,7 +16,7 @@ public class MoviesResponse implements Parcelable
     private Integer page;
     @SerializedName("results")
     @Expose
-    private List<Movie> results = null;
+    private List<Review> results = null;
     @SerializedName("total_results")
     @Expose
     private Integer totalResults;
@@ -32,11 +32,11 @@ public class MoviesResponse implements Parcelable
         this.page = page;
     }
 
-    public List<Movie> getResults() {
+    public List<Review> getResults() {
         return results;
     }
 
-    public void setResults(List<Movie> results) {
+    public void setResults(List<Review> results) {
         this.results = results;
     }
 
@@ -67,19 +67,19 @@ public class MoviesResponse implements Parcelable
         dest.writeValue(totalPages);
     }
 
-    protected MoviesResponse(Parcel in) {
+    protected ReviewsResponse(Parcel in) {
         this.page = ((Integer) in.readValue((Integer.class.getClassLoader())));
         in.readList(this.results, (Movie.class.getClassLoader()));
         this.totalResults = ((Integer) in.readValue((Integer.class.getClassLoader())));
         this.totalPages = ((Integer) in.readValue((Integer.class.getClassLoader())));
     }
 
-    public final static Parcelable.Creator<MoviesResponse> CREATOR = new Creator<MoviesResponse>() {
+    public final static Parcelable.Creator<ReviewsResponse> CREATOR = new Creator<ReviewsResponse>() {
 
-        public MoviesResponse createFromParcel(Parcel source) {return new MoviesResponse(source);}
+        public ReviewsResponse createFromParcel(Parcel source) {return new ReviewsResponse(source);}
 
-        public MoviesResponse[] newArray(int size) {
-            return (new MoviesResponse[size]);
+        public ReviewsResponse[] newArray(int size) {
+            return (new ReviewsResponse[size]);
         }
 
     };

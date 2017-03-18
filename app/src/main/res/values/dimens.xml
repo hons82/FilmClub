@@ -10,8 +10,23 @@
     <dimen name="cv_title_text_size">14sp</dimen>
     <dimen name="cv_title_sub_text_size">12sp</dimen>
 
+    <!-- Detail -->
+    <dimen name="detail_horizontal_padding">14dp</dimen>
+    <dimen name="detail_vertical_padding">14dp</dimen>
     <dimen name="detail_title_text_size">14sp</dimen>
     <dimen name="detail_title_sub_text_size">12sp</dimen>
     <dimen name="detail_overview_text_size">14sp</dimen>
+
+    <!-- Trailer -->
+    <dimen name="trailer_horizontal_padding">14dp</dimen>
+    <dimen name="trailer_vertical_padding">14dp</dimen>
+    <dimen name="iv_trailer_width">150dp</dimen>
+    <dimen name="iv_trailer_height">100dp</dimen>
+
+    <!-- Review -->
+    <dimen name="review_horizontal_padding">14dp</dimen>
+    <dimen name="review_vertical_padding">14dp</dimen>
+    <dimen name="tv_review_content_text_size">14sp</dimen>
+    <dimen name="tv_review_author_text_size">12sp</dimen>
 
 </resources>

@@ -1,11 +1,7 @@
 package it.subtree.filmclub.util;
 
-import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-
-/**
- * Created by htribus on 03/02/2017.
- */
 
 public abstract class EndlessRecyclerOnScrollListener extends RecyclerView.OnScrollListener {
     public static String TAG = EndlessRecyclerOnScrollListener.class.getSimpleName();
@@ -18,9 +14,9 @@ public abstract class EndlessRecyclerOnScrollListener extends RecyclerView.OnScr
     private int totalItemCount;
     private int current_page = 1;
 
-    private GridLayoutManager mLayoutManager;
+    private LinearLayoutManager mLayoutManager;
 
-    public EndlessRecyclerOnScrollListener(GridLayoutManager layoutManager) {
+    public EndlessRecyclerOnScrollListener(LinearLayoutManager layoutManager) {
         mLayoutManager = layoutManager;
     }
 
