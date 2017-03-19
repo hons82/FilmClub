@@ -1,7 +1,10 @@
 package it.subtree.filmclub.ui.activity;
 
 import android.app.ProgressDialog;
+import android.content.ContentValues;
 import android.content.Intent;
+import android.database.Cursor;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -9,6 +12,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -23,6 +27,7 @@ import butterknife.ButterKnife;
 import it.subtree.filmclub.R;
 import it.subtree.filmclub.data.api.MovieDbApiClient;
 import it.subtree.filmclub.data.api.MovieDbEndpointInterface;
+import it.subtree.filmclub.data.db.MoviesContract;
 import it.subtree.filmclub.data.model.Movie;
 import it.subtree.filmclub.data.model.Review;
 import it.subtree.filmclub.data.model.ReviewsResponse;
@@ -51,6 +56,8 @@ public class CinemaActivity extends AppCompatActivity {
     protected TextView mAvgRating;
     @BindView(R.id.tv_movie_votes)
     protected TextView mVotes;
+    @BindView(R.id.ib_favorites)
+    protected ImageButton mFavorites;
     @BindView(R.id.tv_movie_overview)
     protected TextView mOverview;
     @BindView(R.id.rv_trailer)
@@ -74,7 +81,88 @@ public class CinemaActivity extends AppCompatActivity {
             mMovie = getIntent().getParcelableExtra(EXTRA_MOVIE);
             loadMovieDetail(mMovie);
         }
+
+        mFavorites.setSelected(isFavorite());
+        mFavorites.setOnClickListener(new View.OnClickListener() {
+
+            public void onClick(View button) {
+                //Set the button's appearance
+                button.setSelected(!button.isSelected());
+
+                if (button.isSelected()) {
+                    //Handle selected state change
+                    markAsFavorite();
+                } else {
+                    //Handle de-select state change
+                    removeFromFavorites();
+                }
+
+            }
+
+        });
     }
+
+    private boolean isFavorite() {
+        Cursor movieCursor = this.getContentResolver().query(
+                MoviesContract.MovieEntry.CONTENT_URI,
+                new String[]{MoviesContract.MovieEntry.COLUMN_MOVIE_ID},
+                MoviesContract.MovieEntry.COLUMN_MOVIE_ID + " = " + mMovie.getId(),
+                null,
+                null);
+
+        if (movieCursor != null && movieCursor.moveToFirst()) {
+            movieCursor.close();
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public void markAsFavorite() {
+
+        new AsyncTask<Void, Void, Void>() {
+
+            @Override
+            protected Void doInBackground(Void... params) {
+                if (!isFavorite()) {
+                    ContentValues movieValues = new ContentValues();
+                    movieValues.put(MoviesContract.MovieEntry.COLUMN_MOVIE_ID,
+                            mMovie.getId());
+                    movieValues.put(MoviesContract.MovieEntry.COLUMN_MOVIE_TITLE,
+                            mMovie.getTitle());
+                    movieValues.put(MoviesContract.MovieEntry.COLUMN_MOVIE_POSTER_PATH,
+                            mMovie.getPosterPath());
+                    movieValues.put(MoviesContract.MovieEntry.COLUMN_MOVIE_OVERVIEW,
+                            mMovie.getOverview());
+                    movieValues.put(MoviesContract.MovieEntry.COLUMN_MOVIE_VOTE_AVERAGE,
+                            mMovie.getVoteAverage());
+                    movieValues.put(MoviesContract.MovieEntry.COLUMN_MOVIE_RELEASE_DATE,
+                            mMovie.getReleaseDate());
+                    getContentResolver().insert(
+                            MoviesContract.MovieEntry.CONTENT_URI,
+                            movieValues
+                    );
+                }
+                return null;
+            }
+        }.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
+    }
+
+    public void removeFromFavorites() {
+        new AsyncTask<Void, Void, Void>() {
+
+            @Override
+            protected Void doInBackground(Void... params) {
+                if (isFavorite()) {
+                    getContentResolver().delete(MoviesContract.MovieEntry.CONTENT_URI,
+                            MoviesContract.MovieEntry.COLUMN_MOVIE_ID + " = " + mMovie.getId(), null);
+
+                }
+                return null;
+            }
+        }.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
+    }
+
 
     private void loadMovieDetail(Movie movie) {
         mTitle.setText(mMovie.getTitle());

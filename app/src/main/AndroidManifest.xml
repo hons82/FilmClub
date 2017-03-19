@@ -18,6 +18,11 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.activity.CinemaActivity"></activity>
+
+        <provider
+            android:name="it.subtree.filmclub.data.db.MoviesContentProvider"
+            android:authorities="it.subtree.filmclub"
+            android:exported="false"/>
     </application>
 
 </manifest>

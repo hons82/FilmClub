@@ -8,13 +8,16 @@
     <string name="action_sort_by">Sort by</string>
 
     <!-- CinemaActivity -->
-    <string name="action_sort_by_popularity">Popularity</string>
-    <string name="action_sort_by_rating">Rating</string>
     <string name="title_activity_cinema">Cinema</string>
     <string name="movie_overview">Overview</string>
     <string name="movie_release_date">2017-02-07</string>
     <string name="movie_avg_rating">Avg. Rating</string>
     <string name="movie_votes">(Votes: %1$d)</string>
+
+    <!-- Sorting -->
+    <string name="action_sort_by_popularity">Popularity</string>
+    <string name="action_sort_by_rating">Rating</string>
+    <string name="action_sort_by_favorites">Favorites</string>
 
     <!-- Spinner -->
     <string name="loading_title">Preparing Contents</string>
@@ -24,4 +27,6 @@
     <string name="error_api_key_missing">You\'re missing an API key from theMovieDB</string>
     <string name="error_connection">Could not get Movies</string>
     <string name="retry">Retry</string>
+    <string name="no_data_available">No Movies available!</string>
+
 </resources>

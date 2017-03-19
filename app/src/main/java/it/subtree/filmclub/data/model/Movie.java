@@ -3,11 +3,11 @@ package it.subtree.filmclub.data.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Movie implements Parcelable {
 
@@ -55,6 +55,24 @@ public class Movie implements Parcelable {
     @SerializedName("vote_average")
     @Expose
     private double voteAverage;
+
+    public Movie (long id, String title, String poster, String overview, double voteAverage,
+                  String releaseDate) {
+        this.posterPath = poster;
+        this.adult = false;
+        this.overview = overview;
+        this.releaseDate = releaseDate;
+        this.genreIds = new ArrayList<Integer>();
+        this.id = id;
+        this.originalLanguage = "";
+        this.originalTitle = "";
+        this.title = title;
+        this.backdropPath = "";
+        this.popularity = 0.0;
+        this.voteCount = 0;
+        this.video = false;
+        this.voteAverage = voteAverage;
+    }
 
     public String getPosterPath() {
         return posterPath;
