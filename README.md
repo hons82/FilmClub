@@ -8,8 +8,10 @@ Simple android app to browse [The Movie Database](https://www.themoviedb.org/) d
 Currently you can
 
  - Browse movies
+ - Show trailer and reviews
  - Sort by popularity or rating
  - View simple details
+ - Mark favorite movies
 
 # Screenshots
 
